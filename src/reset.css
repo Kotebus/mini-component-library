@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Wotfard';
+  src: url('https://courses.joshwcomeau.com/fonts/wotfard/wotfard-semibold-webfont.woff2')
+  format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: 'Wotfard';
+  src: url('https://courses.joshwcomeau.com/fonts/wotfard/wotfard-medium-webfont.woff2')
+  format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  font-family: 'Wotfard';
+  src: url('https://courses.joshwcomeau.com/fonts/wotfard/wotfard-regular-webfont.woff2')
+  format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+body {
+  margin: 0;
+  padding: 8px;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: Wotfard;
+}
+
+
+body, #root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 16px);
+}

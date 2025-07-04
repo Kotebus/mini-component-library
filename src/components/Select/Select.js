@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { COLORS } from '../../constants';
-import Icon from '../Icon';
+import { COLORS } from '../../constants.js';
+import Icon from '../Icon/index.js';
 import { getDisplayedValue } from './Select.helpers';
 
 const Select = ({ label, value, onChange, children }) => {

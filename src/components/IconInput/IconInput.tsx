@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants';
 
 import Icon from '../Icon';
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from '../VisuallyHidden/index.js';
 
 const IconInput = ({
   label,
