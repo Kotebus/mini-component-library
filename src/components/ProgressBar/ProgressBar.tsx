@@ -14,13 +14,19 @@ const Wrapper = styled.div`
     width: 370px;
     box-shadow: inset 0 2px 4px ${COLORS.transparentGray35};
     border-radius: 4px;
-    overflow: hidden;
 `;
+
+const BarWrapper = styled.div`
+    border-radius: 3px;
+
+    /* Trim off corners when progress bar is near-full. */
+    overflow: hidden;
+`
 
 const Bar = styled.div`
     background-color: ${COLORS.primary};
     height: inherit;
-    border-radius: 2.5px;
+    //border-radius: 2px 0 0 2px;
 `;
 
 const ProgressBar = (
@@ -33,7 +39,7 @@ const ProgressBar = (
 
     const barStyle = {
         width: value + '%',
-        ...(size === 'large' && {height: HEIGHT_SIZE_MAP[size] - 8}),
+        height: HEIGHT_SIZE_MAP[size] - (size === 'large' ? 8 : 0),
     } as CSSProperties;
 
     console.log(wrapperStyle);
@@ -46,7 +52,9 @@ const ProgressBar = (
             aria-labelledby={ariaLabelledBy}
             aria-label={value+'%'}
         >
-            <Bar style={barStyle}/>
+            <BarWrapper>
+                <Bar style={barStyle}/>
+            </BarWrapper>
         </Wrapper>
     );
 }
