@@ -29,8 +29,14 @@ const Bar = styled.div`
     //border-radius: 2px 0 0 2px;
 `;
 
+interface IProgressBarProps {
+    value: number;
+    size: ProgressBarSize;
+    ariaLabelledBy?: string;
+}
+
 const ProgressBar = (
-    { value, size, ariaLabelledBy = 'progressbar' } : {value: number, size: ProgressBarSize, ariaLabelledBy: string }
+    { value, size, ariaLabelledBy = 'progressbar' } : IProgressBarProps
 ) => {
     const wrapperStyle: CSSProperties = {
         height: HEIGHT_SIZE_MAP[size],
