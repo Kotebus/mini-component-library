@@ -29,11 +29,7 @@ const SelectStyled = styled.select`
   line-height: 100%; /* Устанавливаем line-height для центрирования текста */
   text-align: left; /* Устанавливаем выравнивание текста */
   cursor: pointer;
-  
-  &:focus{
-    outline: none;
-    box-shadow: 0 0 0 2px ${COLORS.primary};
-  }
+    
   &:hover{
     color: ${COLORS.black};
   }
