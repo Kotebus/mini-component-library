@@ -44,9 +44,10 @@ const ArrowIcon = styled(ChevronDown)`
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none; /* Чтобы клики проходили через иконку */
+  color: ${COLORS.gray700};
+  pointer-events: none;
 
-  &:hover{
+  ${SelectStyled}:hover + & {
     color: ${COLORS.black};
   }
 `;
@@ -62,7 +63,7 @@ const Select = ({ label, value, onChange, children } : ISelectProps) => {
             onChange={e => onChange(e.target.value)}>
           {children}
         </SelectStyled>
-        <ArrowIcon id={'chevron-down'} size={20} color={COLORS.gray700} />
+        <ArrowIcon id={'chevron-down'} size={24} />
       </SelectWrapper>
   );
 };
