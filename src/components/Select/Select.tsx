@@ -49,8 +49,7 @@ const ArrowIcon = styled(ChevronDown)`
 `;
 
 
-const Select = ({ label, value, onChange, children } : ISelectProps) => {
-  //const displayedValue = getDisplayedValue(value, children);
+const Select = ({ value, onChange, children } : ISelectProps) => {
 
   return (
       <SelectWrapper>

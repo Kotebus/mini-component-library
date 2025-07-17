@@ -1,6 +1,8 @@
 import {useState} from "react";
 import ProgressBar from "./components/ProgressBar";
 import Select from "./components/Select";
+import IconInput from "./components/IconInput";
+import type {IconInputSize} from "./components/IconInput/IconInput.tsx";
 
 export type ProgressBarSize = 'small' | 'medium' | 'large';
 
@@ -81,11 +83,83 @@ const SelectDemo = () => {
     );
 }
 
+const InputDemo = () => {
+    const [text, setText] = useState('');
+    const [width, setWidth] = useState(300);
+    const [size, setSize] = useState<IconInputSize>('small');
+
+    return (
+        <div style={{paddingTop: '10px'}}>
+            <header>Input config</header>
+            <section>
+                <fieldset>
+                    <legend>
+                        Select size
+                    </legend>
+
+                    <input
+                        type="radio"
+                        name="sizes"
+                        id="size-small"
+                        value="small"
+                        checked={size === "small"}
+                        onChange={event => {
+                            setSize(event.target.value as IconInputSize)
+                        }}
+                    />
+                    <label htmlFor="size-small">
+                        Small
+                    </label>
+                    <br />
+
+                    <input
+                        type="radio"
+                        name="sizes"
+                        id="large-size"
+                        value="large"
+                        checked={size === "large"}
+                        onChange={event => {
+                            setSize(event.target.value as IconInputSize)
+                        }}
+                    />
+                    <label htmlFor="large-size">
+                        Large
+                    </label>
+                </fieldset>
+                <input
+                    style={{width: '70%'}}
+                    type='text'
+                    min={1}
+                    value={text}
+                    required={true}
+                    onChange={e => setText(e.target.value)}
+                ></input>
+                <input
+                    style={{width: '30%'}}
+                    type='number'
+                    min={100}
+                    value={width}
+                    required={true}
+                    placeholder={'Width'}
+                    onChange={e => setWidth(e.target.valueAsNumber)}
+                ></input>
+                <div style={{paddingTop: '5px'}}>
+                    <IconInput
+                        width={width}
+                        size={size}
+                    />
+                </div>
+            </section>
+        </div>
+    );
+}
+
 const App = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <ProgressBarDemo/>
-            <SelectDemo/>
+            {/*<ProgressBarDemo/>*/}
+            {/*<SelectDemo/>*/}
+            <InputDemo/>
         </div>
     );
 }
