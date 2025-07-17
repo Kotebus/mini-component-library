@@ -1,4 +1,4 @@
-import {type CSSProperties} from 'react';
+import {type ComponentProps, type CSSProperties} from 'react';
 import styled from 'styled-components';
 import {type Icon, Search} from 'react-feather';
 
@@ -7,12 +7,11 @@ import VisuallyHidden from "../VisuallyHidden";
 
 export type IconInputSize = 'small' | 'large';
 
-interface IIconInputProps {
+interface IIconInputProps extends ComponentProps<'input'>{
     label: string;
     icon?: Icon;
     width?: number;
-    size: IconInputSize;
-    placeholder?: string;
+    inputSize: IconInputSize;
 }
 
 const InputWrapper = styled.div`
@@ -24,7 +23,7 @@ const InputWrapper = styled.div`
     }
 `;
 
-const NativeInput = styled.input`
+const TextInput = styled.input`
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 1rem;
@@ -45,14 +44,15 @@ const IconInput = ({
                        label,
                        icon: IconTag = Search,
                        width = 250,
-                       size,
+                       inputSize = 'small',
                        placeholder = 'Search...',
+                        ...delegated
                    }: IIconInputProps) => {
 
-    const isSmall = size === 'small';
+    const isSmall = inputSize === 'small';
     const commonStyles: CSSProperties = {
         width: width,
-        height: isSmall ? 24 : 36,
+        height: (isSmall ? 24/16 : 36/16) + 'rem',
         borderWidth: isSmall ? 1 : 2,
         border: 'none',
         borderBottomStyle: 'solid',
@@ -74,7 +74,7 @@ const IconInput = ({
                     pointerEvents: 'none',
                 }}
             />
-            <NativeInput
+            <TextInput
                 style={{
                     fontSize: (isSmall ? 1 : (18 / 16)) + 'rem',
                     padding: 0,
@@ -82,6 +82,7 @@ const IconInput = ({
                     ...commonStyles,
                 }}
                 placeholder={placeholder}
+                {...delegated}
             />
         </InputWrapper>
     );
